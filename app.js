@@ -2,14 +2,20 @@ require('dotenv').config();
 const createError = require('http-errors');
 const express = require('express');
 const path = require('path');
-const cors = require("cors");
+const cors = require('cors');
+const mongoose = require('mongoose');
+
+mongoose.set("strictQuery", false);
+mongoose.connect(process.env.NEW_MONGO_URL, {
+  useNewUrlParser: true,
+});
 
 const index = require('./routes/index');
-const login = require('./routes/login');
+const user = require('./routes/user');
 
 const app = express();
 const corsOptions = {
-  origin: "http://localhost:3000",
+  origin: 'http://localhost:3000',
   credentials: true,
 };
 
@@ -19,7 +25,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
-app.use('/login', login);
+app.use('/user', user);
 
 app.use(function(req, res, next) {
   next(createError(404));
@@ -30,7 +36,7 @@ app.use(function(err, req, res, next) {
   res.locals.error = req.app.get('env') === 'development' ? err : {};
 
   res.status(err.status || 500);
-  res.render('error');
+  res.json({ message: err.message, status: err.status });
 });
 
 module.exports = app;

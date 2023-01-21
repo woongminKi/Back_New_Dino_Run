@@ -13,7 +13,10 @@ async function verifyToken(req, res,  next) {
   const refreshTokenExpiresIn = req.body.header.refreshTokenExpiresIn;
 
   try {
-    req.user = accessToken;
+    req.user = {
+      accessToken,
+      refreshToken
+    };
     res.cookie = "";
 
     next();

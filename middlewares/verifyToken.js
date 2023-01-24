@@ -3,14 +3,14 @@ const jwt = require("jsonwebtoken");
 const { ERROR_MESSAGE, EXPIRED_TOKEN, MALFORMED_TOKEN } = require("../utils/tokenInfo");;
 
 async function verifyToken(req, res,  next) {
-  if (!req.body.header) {
+  if (!req.body.headers) {
     return next();
   }
 
-  const accessToken = req.body.header.accessToken;
-  const refreshToken = req.body.header.refreshToken;
-  const accessTokenExpiresIn = req.body.header.accessTokenExpiresIn;
-  const refreshTokenExpiresIn = req.body.header.refreshTokenExpiresIn;
+  const accessToken = req.body.headers.accessToken;
+  const refreshToken = req.body.headers.refreshToken;
+  const accessTokenExpiresIn = req.body.headers.accessTokenExpiresIn;
+  const refreshTokenExpiresIn = req.body.headers.refreshTokenExpiresIn;
 
   try {
     req.user = {

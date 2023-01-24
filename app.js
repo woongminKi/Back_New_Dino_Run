@@ -12,6 +12,7 @@ mongoose.connect(process.env.NEW_MONGO_URL, {
 
 const index = require('./routes/index');
 const user = require('./routes/user');
+const rooms = require('./routes/rooms');
 
 const app = express();
 const corsOptions = {
@@ -26,6 +27,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
 app.use('/user', user);
+app.use('/rooms', rooms);
 
 app.use(function(req, res, next) {
   next(createError(404));

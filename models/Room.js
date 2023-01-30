@@ -10,6 +10,9 @@ const RoomSchema = new mongoose.Schema(
       nickName: {
         type: String,
       },
+      profileImage: {
+        type: String,
+      },
     },
     roomInfo: {
       title: {

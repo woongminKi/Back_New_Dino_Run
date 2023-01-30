@@ -21,9 +21,30 @@ module.exports = (server) => {
       console.error(err);
     });
 
-    socket.on("joinRoom", (data) => {
-      console.log("넘어왔나?", data)
-      socket.broadcast.emit("joinRoom", data);
+    socket.on("joinRoom", async (data) => {
+      const { title, userId, nickName, profileImage, roomId, myInfo } = data;
+      const authorInfo = { id: userId, nickName, profileImage };
+      const user = { authorInfo, myInfo };
+      const currentRoom = await Room.findById(roomId);
+
+      currentRoom.roomInfo.participants.push(user);
+      await currentRoom.save();
+
+      socket.join(roomId);
+      socket.broadcast.emit("joinRoom", user, currentRoom);
+      // socket.to(roomId).emit("joinRoom", user, currentRoom);
+    });
+
+    socket.on("otherPlayerReadyStatus", (otherUserReadyData) => {
+      socket.broadcast.emit("otherPlayerReadyStatus", otherUserReadyData);
+    });
+
+    socket.on("gameScore", (score) => {
+      socket.broadcast.emit("gameScore", score);
+    });
+
+    socket.on("otherPlayerVideo", (video) => {
+      socket.broadcast.emit("otherPlayerVideo", video);
     });
   });
 };

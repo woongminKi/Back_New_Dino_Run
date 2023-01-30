@@ -27,7 +27,7 @@ exports.registerUser = async (req, res, next) => {
     if (user) {
         return res.status(201).send({ result: ALREADY_JOINED_USER });
     }
-    await User.create({ id: userId, nickName, profileImage, score });
+    await User.create({ id: userId, nickName, profileImage, score: 0 });
 
     res.status(201).send({ result: USER_REGISTER_SUCCESS });
   } catch (err) {

@@ -11,6 +11,7 @@ exports.registerRoom = async (req, res, next) => {
         author: {
           id: userId,
           nickName,
+          profileImage,
         },
         roomInfo: {
           title,

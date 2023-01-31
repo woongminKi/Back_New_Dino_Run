@@ -1,12 +1,11 @@
 const socketIO = require("socket.io");
-const User = require("../models/User");
 const Room = require("../models/Room");
 
 module.exports = (server) => {
   const io = socketIO(server, {
     path: "/socket.io",
     cors: {
-      origin: "http://localhost:3000",
+      origin: process.env.CLIENT_URL,
     },
   });
 
@@ -32,7 +31,6 @@ module.exports = (server) => {
 
       socket.join(roomId);
       socket.broadcast.emit("joinRoom", user, currentRoom);
-      // socket.to(roomId).emit("joinRoom", user, currentRoom);
     });
 
     socket.on("otherPlayerReadyStatus", (otherUserReadyData) => {

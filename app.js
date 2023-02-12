@@ -31,7 +31,7 @@ app.use(express.static(buildPath));
 
 app.get("/*", (req, res) => {
   res.sendFile(
-    path.join(__dirname, "../newdinorun_client/build/index.html"),
+    path.resolve(__dirname, "../newdinorun_client", "build", "index.html"),
     (err) => {
       if (err) {
         res.status(500).send(err);

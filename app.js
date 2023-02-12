@@ -10,8 +10,8 @@ mongoose.connect(process.env.NEW_MONGO_URL, {
   useNewUrlParser: true,
 });
 
-const __dirname = path.dirname("");
-const buildPath = path.join(__dirname, "../newdinorun_client/build");
+const _dirname = path.dirname("");
+const buildPath = path.join(_dirname, "../newdinorun_client/build");
 
 const index = require("./routes/index");
 const user = require("./routes/user");

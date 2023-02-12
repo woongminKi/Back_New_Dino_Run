@@ -10,8 +10,8 @@ mongoose.connect(process.env.NEW_MONGO_URL, {
   useNewUrlParser: true,
 });
 
-const _dirname = path.dirname("");
-const buildPath = path.join(_dirname, "../newdinorun_client/build");
+const __dirname = path.dirname("");
+const buildPath = path.join(__dirname, "../newdinorun_client/build");
 
 const index = require("./routes/index");
 const user = require("./routes/user");
@@ -31,7 +31,7 @@ app.use(express.static(buildPath));
 
 app.get("/*", (req, res) => {
   res.sendFile(
-    path.join(_dirname, "../newdinorun_client/build/index.html"),
+    path.join(__dirname, "../newdinorun_client/build/index.html"),
     (err) => {
       if (err) {
         res.status(500).send(err);

@@ -1,18 +1,21 @@
-require('dotenv').config();
-const createError = require('http-errors');
-const express = require('express');
-const path = require('path');
-const cors = require('cors');
-const mongoose = require('mongoose');
+require("dotenv").config();
+const createError = require("http-errors");
+const express = require("express");
+const path = require("path");
+const cors = require("cors");
+const mongoose = require("mongoose");
 
 mongoose.set("strictQuery", false);
 mongoose.connect(process.env.NEW_MONGO_URL, {
   useNewUrlParser: true,
 });
 
-const index = require('./routes/index');
-const user = require('./routes/user');
-const rooms = require('./routes/rooms');
+const _dirname = path.dirname("");
+const buildPath = path.join(_dirname, "../newdinorun_client/build");
+
+const index = require("./routes/index");
+const user = require("./routes/user");
+const rooms = require("./routes/rooms");
 
 const app = express();
 const corsOptions = {
@@ -23,11 +26,24 @@ const corsOptions = {
 app.use(cors(corsOptions));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, "public")));
+app.use(express.static(buildPath));
 
-app.use('/', index);
-app.use('/user', user);
-app.use('/rooms', rooms);
+app.get("/*", (req, res) => {
+  res.sendFile(
+    path.join(_dirname, "../newdinorun_client/build/index.html"),
+    (err) => {
+      if (err) {
+        res.status(500).send(err);
+      }
+    }
+  );
+});
+
+
+app.use("/", index);
+app.use("/user", user);
+app.use("/rooms", rooms);
 
 app.use(function(req, res, next) {
   next(createError(404));
@@ -35,7 +51,7 @@ app.use(function(req, res, next) {
 
 app.use(function(err, req, res, next) {
   res.locals.message = err.message;
-  res.locals.error = req.app.get('env') === 'development' ? err : {};
+  res.locals.error = req.app.get("env") === "development" ? err : {};
 
   res.status(err.status || 500);
   res.json({ message: err.message, status: err.status });

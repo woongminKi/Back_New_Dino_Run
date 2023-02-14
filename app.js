@@ -10,9 +10,6 @@ mongoose.connect(process.env.NEW_MONGO_URL, {
   useNewUrlParser: true,
 });
 
-// const _dirname = path.dirname("");
-// const buildPath = path.join(_dirname, "../newdinorun_client/build");
-
 const index = require("./routes/index");
 const user = require("./routes/user");
 const rooms = require("./routes/rooms");
@@ -28,21 +25,11 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, "public")));
 
-// app.use(express.static(buildPath));
-// app.get("*", (req, res) => {
-//   res.sendFile(
-//     path.resolve(__dirname, "../newdinorun_client", "build", "index.html"),
-//     (err) => {
-//       if (err) {
-//         res.status(500).send(err);
-//       }
-//     }
-//   );
-// });
-
 app.use("/", index);
 app.use("/user", user);
 app.use("/rooms", rooms);
+
+app.get('/ping', (req, res) => res.status(200).send({ result: "good ping!"}));
 
 app.use(function(req, res, next) {
   next(createError(404));

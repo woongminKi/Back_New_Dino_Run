@@ -30,6 +30,7 @@ app.use("/user", user);
 app.use("/rooms", rooms);
 
 app.get('/ping', (req, res) => res.status(200).send({ result: "good ping!"}));
+app.post('/ping', (req, res) => res.status(200).send({ result: "good ping!"}));
 
 app.use(function(req, res, next) {
   next(createError(404));

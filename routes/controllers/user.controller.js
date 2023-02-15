@@ -21,6 +21,7 @@ exports.registerUser = async (req, res, next) => {
     }
     await User.create({ id: userId, nickName, profileImage, score: 0 });
 
+    res.status(200).send({ result: "working well" });
     res.status(201).send({ result: USER_REGISTER_SUCCESS });
   } catch (err) {
     next(createError(404, { message: GET_USER_INFO_FAIL }));

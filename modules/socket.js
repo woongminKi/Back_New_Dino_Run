@@ -5,7 +5,7 @@ module.exports = (server) => {
   const io = socketIO(server, {
     path: "/socket.io",
     cors: {
-      origin: `${process.env.CLIENT_URL}`,
+      origin: process.env.CLIENT_URL,
     },
   });
 

@@ -37,7 +37,11 @@ app.post('/ping', (req, res) => {
   console.log("server working well now");
   res.status(200).send({ result: "good ping!"})
 });
-app.use("/", (req, res) => res.status(200).send("server start"));
+app.get("/", (req, res) => {
+  res.status(200).send("Welcome to the testing.")
+  console.log("Server is Starting now.")
+});
+
 
 app.use(function(req, res, next) {
   next(createError(404));

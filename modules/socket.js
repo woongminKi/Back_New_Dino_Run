@@ -43,9 +43,5 @@ module.exports = (server) => {
     socket.on("otherPlayerVideo", (video) => {
       socket.broadcast.emit("otherPlayerVideo", video);
     });
-
-    socket.on("test", (data) => {
-      socket.emit(data)
-    })
   });
 };

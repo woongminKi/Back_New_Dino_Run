@@ -29,8 +29,14 @@ app.use("/", index);
 app.use("/user", user);
 app.use("/rooms", rooms);
 
-app.get('/ping', (req, res) => res.status(200).send({ result: "good ping!"}));
-app.post('/ping', (req, res) => res.status(200).send({ result: "good ping!"}));
+app.get('/ping', (req, res) => {
+  console.log("server working well now");
+  res.status(200).send({ result: "good ping!"})
+});
+app.post('/ping', (req, res) => {
+  console.log("server working well now");
+  res.status(200).send({ result: "good ping!"})
+});
 app.use("/", (req, res) => res.status(200).send("server start"));
 
 app.use(function(req, res, next) {

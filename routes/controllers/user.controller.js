@@ -12,7 +12,6 @@ exports.postLogin = async (req, res, next) => {
 
 exports.registerUser = async (req, res, next) => {
   const { userId, nickName, profileImage } = req.body;
-  res.status(200).send({ result: "working well" });
 
   try {
     const user = await User.findOne({ id: userId }).lean();

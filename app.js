@@ -16,8 +16,8 @@ const rooms = require("./routes/rooms");
 
 const app = express();
 const corsOptions = {
-  // origin: process.env.CLIENT_URL,
-  origin: "*",
+  origin: process.env.CLIENT_URL,
+  // origin: "*",
   credentials: true,
 };
 

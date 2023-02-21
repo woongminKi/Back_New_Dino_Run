@@ -8,6 +8,7 @@ module.exports = (server) => {
       // origin: process.env.CLIENT_URL,
       origin: "*",
       credentials: true,
+      methods: ["GET", "POST"],
     },
     // cors: "*",
   });

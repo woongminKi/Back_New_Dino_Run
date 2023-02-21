@@ -5,11 +5,12 @@ module.exports = (server) => {
   const io = socketIO(server, {
     path: "/socket.io",
     cors: {
-      // origin: process.env.CLIENT_URL,
-      origin: "*",
+      origin: process.env.CLIENT_URL,
+      // origin: "*",
       credentials: true,
       methods: ["GET", "POST"],
     },
+    transports: ['websocket']
     // cors: "*",
   });
 

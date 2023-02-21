@@ -4,9 +4,10 @@ const Room = require("../models/Room");
 module.exports = (server) => {
   const io = socketIO(server, {
     path: "/socket.io",
-    cors: {
-      origin: process.env.CLIENT_URL,
-    },
+    // cors: {
+    //   origin: process.env.CLIENT_URL,
+    // },
+    cors: "*",
   });
 
   io.on("connection", (socket) => {

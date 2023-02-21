@@ -19,6 +19,7 @@
     "mongodb": "^4.4.0",
     "mongoose": "^6.2.3",
     "morgan": "~1.9.1",
-    "socket.io": "^4.5.4"
+    "socket.io": "^4.5.4",
+    "wscat": "^5.2.0"
   }
 }

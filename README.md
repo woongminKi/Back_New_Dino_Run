@@ -4,13 +4,16 @@
 
 키보드 조작도 가능하지만, 안면 인식으로 감정에 따라 공룡 캐릭터를 조작할 수도 있습니다.
 
-cf) 배포 이슈가 있어 현재 수정 중 입니다.
 
 ## 📈Preview
 
 https://user-images.githubusercontent.com/96522144/158065592-c8e80a69-4aaf-4ada-82d4-909f59805ad0.mov
 
-배포 사이트 : https://www.dino-run.site/
+### 📌배포 사이트 : http://dino-run.site/
+cf) 크롬 시크릿 모드로 실행해주세요.
+
+- Frontend: Netlify
+- Backend: AWS EC2
 
 ## 🚀 ShortCut
 
@@ -28,6 +31,12 @@ https://user-images.githubusercontent.com/96522144/158065592-c8e80a69-4aaf-4ada-
 유투브에서 눈썹으로 게임을 하는 것을 보고선 영감을 받아 모니터를 보며 키보드로 조작을 하는 게임은 많지만 내 얼굴을 보며 감정에 따라 캐릭터가 움직인다면 게임 몰입도를 향상시켜 재미를 더할 수 있지 않을까? 하는 생각에 안면인식 기능을 추가했습니다.
 
 ## ✅ Features
+
+|                                          |                                          |
+| ---------------------------------------- | ---------------------------------------- | 
+|<div><p align="center"><img width="700" height="700" src="https://user-images.githubusercontent.com/96522144/221414117-a5b81e5c-b79b-4e15-98bf-5ef907b3b609.png"/></p><p align="center">👉 소셜 로그인(Kakao)로 로그인을 할 수 있습니다.</p></div>|<div><p align="center"><img width="700" height="700" src="https://user-images.githubusercontent.com/96522144/221416054-8a9c6ccc-308d-4318-9621-b38b72844d62.gif" /></p></div><div align="center">👉 플레어이어는 방을 만들고 입장하면 상대방 입장 여부가 나의 화면에 실시간으로 보여집니다.</div>
+|<div><p align="center"><img width="700" height="700" src="https://user-images.githubusercontent.com/96522144/221416220-16fbf262-f23a-457b-8c00-afaa75232d76.gif" /></p><p align="center" fontsize="3">👉 Ready 상태가 나와 상대방 화면에 실시간으로 보여지며, 두 플레이어 모두 Ready이면 게임이 시작됩니다.</p></div>|<div><p align="center"><img width="700" height="700" src="https://user-images.githubusercontent.com/96522144/221416379-52e6289e-4d4c-4882-855b-6ccb878dbaec.gif" /></p><p align="center">👉 게임이 시작하면 카메라가 켜지며 안면 인식을 시작함과 동시에 웃는 얼굴(Happy)일 때 캐릭터가 점프를 합니다. 스페이스바로도 조작 할 수 있습니다.</p><p align="center">👉 실시간으로 상대방의 점수가 화면에 나타나며 그에 따른 승 패 여부도 실시간으로 확인 할 수 있습니다.</p><p align="center">👉 장애물에 부딪히면 게임이 종료되며 방을 나갈 수 있습니다.</p></div>|<div><p align="center"><img width="700" height="700" src="https://user-images.githubusercontent.com/96522144/221416455-6cdc3482-cf2a-418c-9e3a-1284fb358741.gif" /></p><p align="center" fontsize="3">👉 게임이 종료된 후, 나가기 버튼을 누르면 로비로 나가집니다.</p><p align="center" fontsize="3">👉 로그아웃 버튼을 누르면 계정은 로그아웃이 되며 로그인 화면으로 넘어갑니다.</p></div>
+
 
 ## 🖥 Tech Stack
 
@@ -72,7 +81,8 @@ npm run start
 ```
 REACT_APP_CLIENT_API_ID=YOUR KAKAO CLIENT ID
 REACT_APP_CLIENT_URL=http://localhost:3000
-REACT_APP_SERVER_URL=http://localhost:8000
+REACT_APP_SERVER_URL=http://dino-run.site:8000
+REACT_APP_DINO_URL=http://dino-run.site
 ```
 
 - Backend
@@ -86,7 +96,7 @@ npm run dev
 PORT=8000
 SECRET_KEY=YOUR SECRET KEY
 NEW_MONGO_URL=YOUR MONGO DB URL
-CLIENT_URL=http://localhost:3000
+CLIENT_URL=http://dino-run.site
 ```
 
 ## 🔥 Challenge
